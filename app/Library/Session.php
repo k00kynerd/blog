@@ -74,6 +74,14 @@ class Session implements ArrayAccess
         return session_name();
     }
 
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return session_id();
+    }
+
     private function init()
     {
         $_SESSION[$this->meta] = [

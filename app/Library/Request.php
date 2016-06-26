@@ -19,6 +19,9 @@ class Request
     /** @var string */
     protected $rawBody;
 
+    /** @var  array */
+    protected $headers;
+
 
     /**
      * Request constructor.
@@ -30,6 +33,7 @@ class Request
         $this->get = &$_GET;
         $this->post = &$_POST;
         $this->rawBody = file_get_contents('php://input');
+        $this->headers = $this->getAllHeaders();
     }
 
     /**
@@ -69,6 +73,16 @@ class Request
     }
 
     /**
+     * @param $key
+     * @param null $default
+     * @return mixed
+     */
+    public function getHeader($key, $default = null)
+    {
+        return $this->getRequestArrayValue($this->headers, $key, $default);
+    }
+
+    /**
      * @return string
      */
     public function getRawBody()
@@ -81,11 +95,34 @@ class Request
      */
     public function getBodyJson()
     {
-        $object = json_decode($this->rawBody);
+        $object = json_decode($this->rawBody, true);
         if ($object === false) {
             return null;
         }
         return $object;
+    }
+
+    /**
+     * @param $method
+     * @return bool
+     */
+    public function is($method)
+    {
+        return ($this->method === strtoupper($method));
+    }
+
+    /**
+     * @return array
+     */
+    private function getAllHeaders()
+    {
+        $headers = [];
+        foreach ($_SERVER as $name => $value) {
+            if (substr($name, 0, 5) == 'HTTP_') {
+                $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+            }
+        }
+        return $headers;
     }
 
     /**

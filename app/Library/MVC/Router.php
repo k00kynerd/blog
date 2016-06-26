@@ -117,6 +117,7 @@ class Router
 
     /**
      * @param \Exception $e
+     * @return mixed
      * @throws ApplicationException
      */
     public function errorHandler(\Exception $e)
@@ -126,7 +127,7 @@ class Router
         if(!$this->checkControllerActionExist($this->errorHandler, $errorClass)) {
             throw new ApplicationException('Unhandled Exception');
         }
-        echo call_user_func([$this->errorHandler, $errorClass], $e->getMessage());
+        return call_user_func([$this->errorHandler, $errorClass], $e->getMessage());
     }
 
     /**
