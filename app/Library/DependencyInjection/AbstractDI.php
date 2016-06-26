@@ -2,9 +2,9 @@
 
 namespace Library\DependencyInjection;
 
-
 abstract class AbstractDI
 {
+    /** @var array */
     protected $storage;
 
     /**

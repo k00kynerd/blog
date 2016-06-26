@@ -1,5 +1,6 @@
 <?php
 use Library\DependencyInjection\DI;
+use Library\DependencyInjection\DIRegistry;
 use Library\Session;
 use Library\Request;
 
@@ -10,5 +11,6 @@ $di->set('request', new Request());
 $di->set('database', function () {
     return 'database';
 });
+DIRegistry::setDI($di);
 
 return $di;

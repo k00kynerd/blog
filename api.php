@@ -7,8 +7,8 @@ $config = include __DIR__ . '/app/config.php';
 $di = include __DIR__ . '/app/services.php';
 
 try {
-    $application = new Application($di);
-    echo $application->handle()->getContent();
+    $application = new Application();
+    echo $application->run()->getContent();
 
 } catch (\Exception $e) {
     echo $e->getMessage();

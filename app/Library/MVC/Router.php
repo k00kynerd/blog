@@ -14,6 +14,9 @@ class Router
     /** @var string  */
     private $basePath = '';
 
+    /** @var string */
+    private $errorHandler;
+
     /** @var array */
     public static $allowMethods = [
         'GET',
@@ -95,6 +98,35 @@ class Router
             $route['action'],
             $actionParams
         ];
+    }
+
+    /**
+     * @param $errorsController
+     * @return $this
+     * @throws ApplicationException
+     */
+    public function setErrorHandlerController($errorsController)
+    {
+        if (empty($errorsController) || !class_exists($errorsController, true)) {
+            throw new ApplicationException('Wrong error controller');
+        }
+        $this->errorHandler = $errorsController;
+
+        return $this;
+    }
+
+    /**
+     * @param \Exception $e
+     * @throws ApplicationException
+     */
+    public function errorHandler(\Exception $e)
+    {
+        $errorClass = (new \ReflectionObject($e))->getShortName();
+
+        if(!$this->checkControllerActionExist($this->errorHandler, $errorClass)) {
+            throw new ApplicationException('Unhandled Exception');
+        }
+        echo call_user_func([$this->errorHandler, $errorClass], $e->getMessage());
     }
 
     /**
