@@ -74,7 +74,7 @@ class CommentsMapper extends BaseMapper
         $mapping = [
             'user_id' => ($comment->getUserId() !== null) ? $comment->getUserId() : 'NULL',
             'post_id' => $comment->getPostId(),
-            'body' => "'{$comment->getBody()}'",
+            'body' => $this->adapter->quote($comment->getBody()),
             'created_at' => ($comment->getCreatedAt() !== null) ? "'{$comment->getCreatedAt()}'" : 'NULL',
             'is_deleted' => $comment->isDeleted()
         ];

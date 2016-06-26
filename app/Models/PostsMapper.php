@@ -60,8 +60,8 @@ class PostsMapper extends BaseMapper
     {
         $mapping = [
             'user_id' => $post->getUserId(),
-            'title' => ($post->getTitle() !== null) ? "'{$post->getTitle()}'" : 'NULL',
-            'body' => "'{$post->getBody()}'",
+            'title' => ($post->getTitle() !== null) ? $this->adapter->quote($post->getTitle()) : 'NULL',
+            'body' => $this->adapter->quote($post->getBody()),
             'created_at' => ($post->getCreatedAt() !== null) ? "'{$post->getCreatedAt()}'" : 'NULL',
             'is_deleted' => $post->isDeleted()
         ];
