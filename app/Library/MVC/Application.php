@@ -2,12 +2,11 @@
 
 namespace Library\MVC;
 
-USE Library\DependencyInjection\DIRegistry;
+use Library\DependencyInjection\DIRegistry;
 use Library\MVC\Exceptions\ApplicationException;
 use Library\MVC\Exceptions\BadRequestException;
 use Library\MVC\Exceptions\NotFoundException;
 use Library\MVC\Exceptions\UnauthorizedException;
-use Library\MVC\Exceptions\ValidationException;
 use Library\Request;
 
 class Application

@@ -26,7 +26,7 @@ $dbConfig = new DbConf([
     'type' => 'mysql',
     'host' => '127.0.0.1',
     'user' => 'root',
-    'password' => 'password',
+    'password' => 'T2bLsyw61',
     'name' => 'blog'
 ]);
 
