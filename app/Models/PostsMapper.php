@@ -39,7 +39,8 @@ class PostsMapper extends BaseMapper
             'SELECT posts.*, users.name as user_name 
              FROM blog.posts 
              LEFT JOIN blog.users ON posts.user_id = users.id 
-             WHERE posts.is_deleted = 0 LIMIT ' . $this->limit . ' OFFSET ' . $this->offset
+             WHERE posts.is_deleted = 0 ORDER BY posts.created_at DESC 
+             LIMIT ' . $this->limit . ' OFFSET ' . $this->offset
         );
         $entries = [];
 
@@ -59,7 +60,7 @@ class PostsMapper extends BaseMapper
     {
         $mapping = [
             'user_id' => $post->getUserId(),
-            'title' => "'{$post->getTitle()}'",
+            'title' => ($post->getTitle() !== null) ? "'{$post->getTitle()}'" : 'NULL',
             'body' => "'{$post->getBody()}'",
             'created_at' => ($post->getCreatedAt() !== null) ? "'{$post->getCreatedAt()}'" : 'NULL',
             'is_deleted' => $post->isDeleted()

@@ -8,7 +8,7 @@ $di = include __DIR__ . '/app/services.php';
 
 try {
     $application = new Application();
-    echo $application->run();
+    $application->run();
 
 } catch (\Exception $e) {
     echo $e->getMessage();

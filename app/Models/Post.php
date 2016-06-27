@@ -2,6 +2,7 @@
 
 namespace Models;
 
+use Library\MVC\Exceptions\ValidationException;
 use Library\MVC\Model\BaseModel;
 
 class Post extends BaseModel
@@ -93,9 +94,13 @@ class Post extends BaseModel
     /**
      * @param string $title
      * @return $this
+     * @throws ValidationException
      */
     public function setTitle($title)
     {
+        if (empty($title)) {
+            throw new ValidationException('Empty post title');
+        }
         $this->title = $title;
         return $this;
     }

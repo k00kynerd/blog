@@ -6,18 +6,18 @@ use Library\MVC\ACL;
 $router = new Router();
 
 //Authorization
-$router->map('/login', 'POST', '\Controllers\AuthController::login');
-$router->map('/logout', 'POST', '\Controllers\AuthController::logout');
+$router->map('/v1.0/login', 'POST', '\Controllers\AuthController::login');
+$router->map('/v1.0/logout', 'POST', '\Controllers\AuthController::logout');
 
 //Blog posts
-$router->map('/posts', 'POST', '\Controllers\PostsController::create');
-$router->map('/posts', 'GET', '\Controllers\PostsController::getList');
-$router->map('/posts/([0-9]+)', 'GET', '\Controllers\PostsController::getObject');
+$router->map('/v1.0/posts', 'POST', '\Controllers\PostsController::create');
+$router->map('/v1.0/posts', 'GET', '\Controllers\PostsController::getList');
+$router->map('/v1.0/posts/([0-9]+)', 'GET', '\Controllers\PostsController::getObject');
 
 //Posts comments
-$router->map('/posts/([0-9]+)/comments', 'POST', '\Controllers\CommentsController::create');
-$router->map('/posts/([0-9]+)/comments', 'GET', '\Controllers\CommentsController::getList');
-$router->map('/posts/([0-9]+)/comments/([0-9]+)', 'GET', '\Controllers\CommentsController::getObject');
+$router->map('/v1.0/posts/([0-9]+)/comments', 'POST', '\Controllers\CommentsController::create');
+$router->map('/v1.0/posts/([0-9]+)/comments', 'GET', '\Controllers\CommentsController::getList');
+$router->map('/v1.0/posts/([0-9]+)/comments/([0-9]+)', 'GET', '\Controllers\CommentsController::getObject');
 
 //ErrorHandler
 $router->setErrorHandlerController('\Controllers\ErrorsController');

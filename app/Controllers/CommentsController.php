@@ -27,10 +27,6 @@ class CommentsController extends BaseController
             ->setOffset($offset)
             ->findAllPostComments($postId);
 
-        if (count($comments) === 0) {
-            throw new NotFoundException('No comments');
-        }
-
         return json_encode($comments);
     }
 

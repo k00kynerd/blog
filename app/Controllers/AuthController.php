@@ -39,7 +39,7 @@ class AuthController extends BaseController
         }
         /** @var Session $session */
         $session = DIRegistry::getDI()->get('session');
-        $session->set('auth', true);
+        $session->set('userId', $user->getId());
 
         return json_encode([
             'auth' => $session->getId()

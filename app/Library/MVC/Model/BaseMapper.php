@@ -4,7 +4,6 @@ namespace Library\MVC\Model;
 
 use Library\Database\Connections\Mysql;
 use Library\DependencyInjection\DIRegistry;
-use Library\MVC\Exceptions\ApplicationException;
 use Library\Utils\ArrayUtil;
 
 abstract class BaseMapper

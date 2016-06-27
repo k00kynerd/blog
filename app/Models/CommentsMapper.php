@@ -46,7 +46,8 @@ class CommentsMapper extends BaseMapper
              LEFT JOIN blog.users ON comments.user_id = users.id 
              LEFT JOIN blog.posts ON comments.post_id = posts.id
              WHERE comments.post_id=' . (int)$postId . ' AND comments.is_deleted = 0 
-                   AND posts.is_deleted = 0 LIMIT ' . $this->limit . ' OFFSET ' . $this->offset
+                   AND posts.is_deleted = 0 ORDER BY comments.created_at DESC 
+             LIMIT ' . $this->limit . ' OFFSET ' . $this->offset
         );
         $entries = [];
 

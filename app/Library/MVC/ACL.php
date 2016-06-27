@@ -47,7 +47,7 @@ class ACL
                 return true;
             }
             if (
-                $session->get('auth', false) === true &&
+                $session->get('userId', null) !== null &&
                 $request->getHeader(self::X_TOKEN_HEADER) === $session->getId()
             ) {
                 return true;
