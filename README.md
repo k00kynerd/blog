@@ -6,6 +6,7 @@ Need to write a blog from scratch (without using frameworks and libraries).
 2. Opened post with comments
 3. Add post
 4. Authorization
+
 ###Functional:
 1. An authorized user can add post.
 2. Anyone can comment it.
