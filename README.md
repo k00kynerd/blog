@@ -2,13 +2,13 @@
 ##Task
 Need to write a blog from scratch (without using frameworks and libraries).
 ###Four pages:
-1) List of posts
-2) Opened post with comments
-3) Add post
-4) Authorization
+1. List of posts
+2. Opened post with comments
+3. Add post
+4. Authorization
 ###Functional:
-1) An authorized user can add post.
-2) Anyone can comment it.
+1. An authorized user can add post.
+2. Anyone can comment it.
 
 NB templates and layout can be omitted.
  
