@@ -1,20 +1,20 @@
 # Blog engine
-##Task
+## Task
 Need to write a blog from scratch (without using frameworks and libraries).
-###Four pages:
+### Four pages:
 1. List of posts
 2. Opened post with comments
 3. Add post
 4. Authorization
 
-###Functional:
+### Functional:
 1. An authorized user can add post.
 2. Anyone can comment it.
 
 NB templates and layout can be omitted.
  
 It is important to write it nicely in terms of application OOP architecture.
-##Solutions comments
+## Solutions comments
 Blog represented as REST API service and the small JavaScript client on jQuery. 
 As a result of solving the problem, formed a small framework (to implement backend not use third-party libraries), below are its main features:
 * The models are implemented on the pattern Date Mapper
